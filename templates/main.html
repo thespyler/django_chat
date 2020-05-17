@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Chat App</title>
+</head>
+<body style="font: small-caption;"
+style="display: inline;");>
+
+{% block content %}
+	<h1>This is a chat application</h1>
+		<hr><h5 style="font: small-caption;"> Messages:</h5>
+	<!-- Write all the messages -->
+	{% for obj in objs %}
+			<font size="20" style="font:  caption; color: rgb('red');">
+			<form action="/delete/{{obj.id}}" method="post">{% csrf_token %}
+			{{obj.text}} {{time}}<hr>
+	<input type="submit" value="delete"><br><br>
+	</form></font>
+	{% endfor %}
+	<!-- text-box to write-->
+	<hr>
+	<form action="/write/" method="post">
+		{% csrf_token %}
+		<input type="text" name="write">
+		<input type="submit" value="Send">
+	</form>
+
+{% endblock %}
+<footer>by abhilash talankar</footer>
+</body>
+</html>
